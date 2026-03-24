@@ -127,7 +127,7 @@ if (!saved) {
 
 let checkedCount = 0;
 
-function Pro() {
+function Prog() {
   countText.textContent = checkedCount;
   progressBar.value = checkedCount;
 }
