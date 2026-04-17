@@ -12,6 +12,11 @@ let saved_per_surah =
 
 // references to DOM elements for applyRemoteState
 const surahElems = [];
+// Show Duaa
+function show_duaa() {
+  const duaa = confirm("اللهم إني أستودعتك ما قرأت وما حفظت وما تعلمت فرده عند حاجتي إليه إنك على كل شيء قدير");
+  console.log(ok ? "تقبل الله منا ومنكم!" : "الحمد لله");
+}
 
 // the isLocalChange prevents a "Hot Potato" situation between clients
 function updateProgress(isLocalChange = true) {
@@ -58,6 +63,7 @@ QURAN_REG.forEach((surah, index) => {
     checkbox.checked = true;
     surahProgress.hidden = true;
     span.textContent = " 🤲 تم الحفظ";
+    show_duaa();
     saved_per_surah[index] = surah.numberOfAyahs;
   }
 
@@ -79,6 +85,7 @@ QURAN_REG.forEach((surah, index) => {
       checkbox.checked = true;
       surahProgress.hidden = true;
       span.textContent = " 🤲 تم الحفظ";
+      show_duaa();
     } else {
       checkbox.checked = false;
       surahProgress.hidden = false;
@@ -92,6 +99,7 @@ QURAN_REG.forEach((surah, index) => {
     if (this.checked) {
       surahProgress.hidden = true;
       span.textContent = " 🤲 تم الحفظ";
+      show_duaa();
 
       saved_per_surah[index] = surah.numberOfAyahs;
       ayatInput.value = surah.numberOfAyahs;
@@ -136,6 +144,7 @@ function applyRemoteState(remoteArray) {
       checkbox.checked = true;
       surahProgress.hidden = true;
       span.textContent = " 🤲 تم الحفظ";
+      show_duaa();
     } else {
       checkbox.checked = false;
       surahProgress.hidden = false;
