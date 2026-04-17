@@ -57,7 +57,7 @@ QURAN_REG.forEach((surah, index) => {
   if (saved_per_surah[index] === surah.numberOfAyahs) {
     checkbox.checked = true;
     surahProgress.hidden = true;
-    span.textContent = " 🤲 تمت القراءة";
+    span.textContent = " 🤲 تم الحفظ";
     saved_per_surah[index] = surah.numberOfAyahs;
   }
 
@@ -78,7 +78,7 @@ QURAN_REG.forEach((surah, index) => {
     if (val == surah.numberOfAyahs) {
       checkbox.checked = true;
       surahProgress.hidden = true;
-      span.textContent = " 🤲 تمت القراءة";
+      span.textContent = " 🤲 تم الحفظ";
     } else {
       checkbox.checked = false;
       surahProgress.hidden = false;
@@ -91,7 +91,7 @@ QURAN_REG.forEach((surah, index) => {
   checkbox.addEventListener("change", function () {
     if (this.checked) {
       surahProgress.hidden = true;
-      span.textContent = " 🤲 تمت القراءة";
+      span.textContent = " 🤲 تم الحفظ";
       saved_per_surah[index] = surah.numberOfAyahs;
       ayatInput.value = surah.numberOfAyahs;
     } else {
@@ -134,7 +134,7 @@ function applyRemoteState(remoteArray) {
     if (val === surah.numberOfAyahs) {
       checkbox.checked = true;
       surahProgress.hidden = true;
-      span.textContent = " 🤲 تمت القراءة";
+      span.textContent = " 🤲 تم الحفظ";
     } else {
       checkbox.checked = false;
       surahProgress.hidden = false;
@@ -145,4 +145,4 @@ function applyRemoteState(remoteArray) {
   updateProgress(false);
 }
 
-updateProgress(false); // We still didn't connect
+updateProgress(false); // We still didn't connect :(
