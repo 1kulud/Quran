@@ -15,7 +15,7 @@ const surahElems = [];
 // Show Duaa
 function show_duaa() {
   const duaa = confirm("اللهم إني أستودعتك ما قرأت وما حفظت وما تعلمت فرده عند حاجتي إليه إنك على كل شيء قدير");
-  console.log(ok ? "تقبل الله منا ومنكم!" : "الحمد لله");
+  console.log(duaa ? "تقبل الله منا ومنكم!" : "الحمد لله");
 }
 
 // the isLocalChange prevents a "Hot Potato" situation between clients
