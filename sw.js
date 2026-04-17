@@ -1,10 +1,14 @@
-const CACHE = "check-v1.1";
+const CACHE = "check-v1.2";
 const ASSETS = [
   "/",
   "/index.html",
   "/style.css",
+  "/style_modal.css",
   "/script.js",
   "/quran.js",
+  "/sw-register.js",
+  "/config.js",
+  "/sync.js",
   "/manifest.json",
   "/icon-192.png",
   "/icon-512.png",

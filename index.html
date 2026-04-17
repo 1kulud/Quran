@@ -6,12 +6,30 @@
     <meta name="author" content="Khouloud Tlili, Souhail Ben Belhassen" />
     <script src="sw-register.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style_modal.css" />
     <title>قائمة سور القرآن</title>
-    <link rel="icon" href="icon-192.png" />
+    <link rel="icon" href="quran.com.ico" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+
+    <script src="config.js"></script>
     <script src="quran.js"></script>
   </head>
 
   <body>
+    <div id="modal-overlay" hidden>
+      <h2>Synchronize</h2>
+      <p id="prompt">Enter Room_ID and password to synchronize</p>
+      <input id="modal-id" type="text" placeholder="Room ID" />
+      <input id="modal-pass" type="password" placeholder="PASSWORD" />
+      <div id="modal-actions">
+        <button class="btn" id="btn-join">Join</button>
+        <button class="btn" id="btn-skip">Skip</button>
+      </div>
+      <p id="modal-status" class="modal-status"></p>
+    </div>
+
     <div class="main-container">
       <h1>📖 قائمة سور القرآن</h1>
       <div class="basmalah">بِسْمِ ٱللّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
@@ -24,8 +42,11 @@
       <div id="list"></div>
     </div>
 
-    <script src="script.js"></script>
+    <button class="btn" id="btn-sync">🔗 Sync</button>
 
+    <script src="sync.js"></script>
+    <script src="script.js"></script>
+    <script src="modal.js"></script>
     <footer>
       <p>
         Designed and developed as a team by Khouloud Tlili and Souhail Ben

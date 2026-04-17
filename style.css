@@ -1,19 +1,26 @@
+:root {
+  --main-bg-color: #0f172a;
+  --main-color: #1e293b;
+  --border-color: #334155;
+  --accent: #22c55e;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #0f172a;
+  background: var(--main-bg-color);
   color: #f8fafc;
   text-align: center;
   padding: 20px;
 }
 
 h1 {
-  color: #22c55e;
+  color: var(--accent);
 }
 
 .main-container {
   max-width: 600px;
   margin: auto;
-  background: #1e293b;
+  background: var(--main-color);
   padding: 20px;
   border-radius: 15px;
 }
@@ -24,7 +31,7 @@ h1 {
   align-items: center;
   direction: rtl;
   padding: 6px;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid var(--border-color);
 }
 
 label {
@@ -34,11 +41,11 @@ label {
 
 input {
   margin-left: 10px;
-  accent-color: #22c55e;
+  accent-color: var(--accent);
 }
 
 .done {
-  color: #22c55e;
+  color: var(--accent);
   margin-right: 10px;
   font-size: 0.9em;
 }
@@ -75,8 +82,8 @@ progress {
 
 .ayat-input {
   width: 50px;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: var(--main-color);
+  border: 1px solid var(--border-color);
   color: white;
   border-radius: 4px;
   padding: 4px;
