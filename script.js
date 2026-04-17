@@ -10,7 +10,11 @@ let saved_per_surah =
   JSON.parse(localStorage.getItem("progressPerSurah")) ||
   Array(TOTAL_SURAH).fill(0);
 
-function updateProgress() {
+// references to DOM elements for applyRemoteState
+const surahElems = [];
+
+// the isLocalChange prevents a "Hot Potato" situation between clients
+function updateProgress(isLocalChange = true) {
   localStorage.setItem("progressPerSurah", JSON.stringify(saved_per_surah));
 
   const totalMemAyats = saved_per_surah.reduce((sum, val) => sum + val, 0);
@@ -19,6 +23,8 @@ function updateProgress() {
 
   const percentage = ((totalMemAyats / TOTAL_AYATS) * 100).toFixed(1);
   percentText.textContent = `(${percentage}%)`;
+
+  if (isLocalChange) pushState(saved_per_surah); // Sync
 }
 
 QURAN_REG.forEach((surah, index) => {
@@ -54,6 +60,9 @@ QURAN_REG.forEach((surah, index) => {
     span.textContent = " 🤲 تمت القراءة";
     saved_per_surah[index] = surah.numberOfAyahs;
   }
+
+  // Store references for applyRemoteState
+  surahElems[index] = { checkbox, surahProgress, span, ayatInput };
 
   ayatInput.addEventListener("input", function () {
     let val = parseInt(this.value) || 0;
@@ -110,4 +119,30 @@ QURAN_REG.forEach((surah, index) => {
   container.appendChild(div);
 });
 
-updateProgress();
+// when remote state arrives via WebSocket
+function applyRemoteState(remoteArray) {
+  remoteArray.forEach((val, index) => {
+    if (val === saved_per_surah[index]) return;
+
+    const surah = QURAN_REG[index];
+    const { checkbox, surahProgress, span, ayatInput } = surahElems[index];
+
+    saved_per_surah[index] = val;
+    ayatInput.value = val;
+    surahProgress.value = val;
+
+    if (val === surah.numberOfAyahs) {
+      checkbox.checked = true;
+      surahProgress.hidden = true;
+      span.textContent = " 🤲 تمت القراءة";
+    } else {
+      checkbox.checked = false;
+      surahProgress.hidden = false;
+      span.textContent = "";
+    }
+  });
+
+  updateProgress(false);
+}
+
+updateProgress(false); // We still didn't connect

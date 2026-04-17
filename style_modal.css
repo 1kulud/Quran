@@ -1,0 +1,89 @@
+:root {
+  --main-bg-color: #0f172a;
+  --main-color: #1e293b;
+  --border-color: #334155;
+  --accent: #22c55e;
+  --text-color: #94a3b8;
+}
+
+#modal-overlay {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  padding: 10px;
+  gap: 5px;
+  border: 1px solid var(--border-color);
+  display: none;
+}
+
+#modal-overlay h2 {
+  margin: 0;
+  color: var(--accent);
+}
+
+#modal-overlay .prompt {
+  margin: 0;
+  font-size: 0.9em;
+  color: white;
+}
+
+#modal-id,
+#modal-pass {
+  padding: 7px;
+  border-radius: 10px;
+  border: 3px solid var(--border-color);
+  font-size: 1em;
+}
+
+.btn {
+  padding: 10px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#btn-join {
+  background: var(--accent);
+  color: var(--main-bg-color);
+}
+
+#btn-skip {
+  background: var(--main-bg-color);
+  color: var(--text-color);
+}
+
+#btn-sync {
+  background: var(--accent);
+  color: var(--main-bg-color);
+
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 999;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 12px 20px;
+}
+
+#btn-sync:hover {
+  transform: scale(1.05);
+  background-color: #27ae60;
+}
+
+.modal-status {
+  font-size: 0.85em;
+  color: var(--text-color);
+  font-weight: bold;
+  min-height: 1em;
+}
+
+.modal-status.success {
+  color: #22c55e;
+}
+.modal-status.error {
+  color: #ef4444;
+}
